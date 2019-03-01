@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>photogur</title>
+  </head>
+  <body>
+    {% for picture in pictures %}
+    <ul>
+      <li>
+        <p>{{ picture.title }}{{ picture.artist }} | Comments: {{picture.comments.count}}
+      <img src="{{ picture.url }}" alt=""></li>
+
+    </ul>
+    {% endfor %}
+  </body>
+</html>
