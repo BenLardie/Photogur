@@ -7,9 +7,12 @@
   <body>
     {% for picture in pictures %}
     <ul>
+      <a href="pictures/{{picture.pk}}">
       <li>
         <p>{{ picture.title }}{{ picture.artist }} | Comments: {{picture.comments.count}}
-      <img src="{{ picture.url }}" alt=""></li>
+      <img src="{{ picture.url }}" alt="">
+      </li>
+      </a>
 
     </ul>
     {% endfor %}
