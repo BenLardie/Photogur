@@ -35,17 +35,26 @@ footer {
   text-align: center;
 }
 
-/* .main-gallery {
-  display: grid;
-  grid-gap: 1.5em;
-  grid-template-columns: 1fr 1fr 1fr;
-} */
-
-
-@media screen and (min-width: 640px) {
-
 .main-gallery {
   margin: 10px;
 }
 
+
+@media only screen and (min-width: 768px) {
+
+.main-gallery {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .main-gallery {
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: 1fr 1fr 1fr;
+    }
 }
