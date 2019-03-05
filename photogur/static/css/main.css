@@ -1,3 +1,51 @@
 body {
-  background: tomato;
+  background: white;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-family: 'Ubuntu', sans-serif;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+header {
+  border-bottom: 2px solid lightgrey;
+
+}
+
+div {
+  border: 1px solid lightgrey;
+  margin: 5px;
+}
+
+p {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1em;
+  padding-left: 5px;
+}
+
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+/* .main-gallery {
+  display: grid;
+  grid-gap: 1.5em;
+  grid-template-columns: 1fr 1fr 1fr;
+} */
+
+
+@media screen and (min-width: 640px) {
+
+.main-gallery {
+  margin: 10px;
+}
+
 }

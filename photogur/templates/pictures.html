@@ -4,10 +4,12 @@
     <main class="main-gallery">
       {% for picture in pictures %}
         <div>
-        <p>{{ picture.title }}{{ picture.artist }} | Comments: {{picture.comments.count}}</p>
           <a href="{% url 'picture_details' id=picture.pk%}">
           <img src="{{ picture.url }}" alt="">
         </a>
+        <p>{{ picture.title }} by {{ picture.artist }}</p>
+      </div>
+        {% endfor %}
   </main>
-    {% endfor %}
+
 {% endblock %}
