@@ -1,6 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Picture
+
+def root(request):
+    return HttpResponseRedirect('pictures')
 
 def picture_page(request):
     context = {'pictures': Picture.objects.all()}
