@@ -7,7 +7,7 @@
           <a href="{% url 'picture_details' id=picture.pk%}">
           <img src="{{ picture.url }}" alt="">
         </a>
-        <p>{{ picture.title }} by {{ picture.artist }}</p>
+        <p>{{ picture.title }} by {{ picture.artist }} | Comments: {{picture.comments.count}}</p>
       </div>
         {% endfor %}
   </main>

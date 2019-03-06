@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
-
+<h1 class=search-results>Your search returned <span class="results"> {{pictures.count}} </span> results</h1>
 {% for picture in pictures %}
   <div>
     <a href="{% url 'picture_details' id=picture.pk%}">

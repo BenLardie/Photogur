@@ -5,7 +5,7 @@
     <img src="{{picture.url}}" alt="{{picture.title}}">
     <ul>
     {% for comment in picture.comments.all %}
-
+      <p>{{ comment.name }}</p>
       <li>{{comment.message}}</li>
         {%endfor%}
     </ul>
