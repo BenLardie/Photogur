@@ -18,7 +18,7 @@ def picture_show(request, id):
 
 def picture_search(request):
     query = request.GET['query']
-    search_results = Picture.objects.filter(artist=query)
+    search_results = Picture.objects.filter(artist=query) | Picture.objects.filter(title=query)
     context = {'pictures': search_results, 'query': query}
     response = render(request, 'search.html', context)
     return HttpResponse(response)
