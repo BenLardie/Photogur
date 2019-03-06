@@ -11,17 +11,17 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   padding-left: 10px;
   padding-bottom: 10px;
+  text-shadow: 2px 5px purple;
 }
 
 header {
   border-bottom: 2px solid lightgrey;
-
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
 
-div {
-  border: 1px solid lightgrey;
-  margin: 5px;
-}
+
 
 p {
   font-family: 'Ubuntu', sans-serif;
@@ -37,6 +37,29 @@ footer {
 
 .main-gallery {
   margin: 10px;
+}
+
+.search-results {
+  font-size: 1em;
+  text-align: center;
+}
+
+.results {
+  border-bottom: 3px solid yellow;
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.search-container {
+  max-width: 70%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.search-pictures {
+  margin: 10px;
+  max-width: 100%;
 }
 
 
