@@ -1,6 +1,7 @@
 body {
   background: white;
   margin: 0;
+  box-sizing: border-box;
 }
 
 img {
@@ -11,7 +12,15 @@ h1 {
   font-family: 'Ubuntu', sans-serif;
   padding-left: 10px;
   padding-bottom: 10px;
-  text-shadow: 2px 5px purple;
+  text-shadow: 2px 5px purple, 3px 6px #21f908;
+}
+
+h2, h3, h4 {
+  display: inline;
+}
+
+h4 {
+  color: lightgrey;
 }
 
 header {
@@ -19,8 +28,13 @@ header {
   background-color: black;
   color: white;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
+header a {
+  text-decoration: none;
+  color: white;
+}
 
 
 p {
@@ -60,6 +74,48 @@ footer {
 .search-pictures {
   margin: 10px;
   max-width: 100%;
+}
+
+.solo-picture {
+  width: 60%;
+  margin: 0 auto;
+  border: 2px solid;
+  padding: 10px;
+}
+
+.comments {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.message {
+  padding-left: 5px;
+  border: 1px dashed;
+  padding: 10px;
+  margin-top: 0;
+
+}
+
+input[type=text], select {
+width: 25%;
+padding: 12px 20px;
+margin: 10px auto;
+display: block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+.comment-button {
+  width: 10%;
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
 }
 
 

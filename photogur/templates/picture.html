@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>{{picture.title}}</h2>
-    <h3>{{picture.artist}}</h3>
+<div class="solo-picture">
+    <h2>{{picture.title}}</h2> | <h3>{{picture.artist}}</h3>
     <img src="{{picture.url}}" alt="{{picture.title}}">
-    <ul>
+</div>
+
+<div class="comments">
     {% for comment in picture.comments.all %}
-      <p>{{ comment.name }}</p>
-      <li>{{comment.message}}</li>
+      <h3>{{ comment.name }}</h3> | <h4>{{comment.created_at}}</h4>
+      <p class="message">{{comment.message}}</p>
         {%endfor%}
-    </ul>
+</div>
 
     <form action="{% url 'create_comment' %}" method="post">
       {% csrf_token %}
       <input type="hidden" name="picture" value="{{ picture.pk }}"/>
       <label for="name">
-        <span>Name:</span>
-        <input id="name" type="text" name='name'>
+        <input id="name" type="text" name='name' placeholder="Name">
       </label>
       <label for="new-comment">
-        <span>Comment:</span>
-        <textarea name="new-comment"></textarea>
+        <input id="new-comment" type="text" name="new-comment" placeholder="Comment">
         </label>
-        <input type="submit" value="submit"/>
+        <input class="comment-button" type="submit" value="submit"/>
     </form>
 {% endblock %}

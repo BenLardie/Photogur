@@ -11,7 +11,9 @@
   </head>
   <body>
     <header>
+      <a href="{% url 'main-page' %}">
       <h1>Photogur</h1>
+      </a>
       <div class="search-bar">
       <form action="{% url 'picture_search'%}" method="get">
         <label for="picture-search">
