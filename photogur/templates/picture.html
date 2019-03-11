@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="solo-picture">
-    <h2>{{picture.title}}</h2> | <h3>{{picture.artist}}</h3>
+    <h2>{{picture.title}}</h2> | <h3>{{picture.artist}} | {{picture.user}}</h3>
     <img src="{{picture.url}}" alt="{{picture.title}}">
 </div>
 

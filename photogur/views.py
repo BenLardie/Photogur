@@ -4,6 +4,7 @@ from .models import Picture, Comment
 from photogur.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from photogur.forms import PictureForm
 
 def root(request):
     return HttpResponseRedirect('pictures')
@@ -49,8 +50,6 @@ def login_view(request):
                 form.add_error('username', 'Login failed')
     else:
         form = LoginForm()
-
-    # form = LoginForm()
     context = {'form': form}
     response = render(request, 'login.html', context)
     return HttpResponse(response)
@@ -73,3 +72,16 @@ def signup(request):
         form = UserCreationForm()
     html_response = render(request, 'signup.html', {'form': form})
     return HttpResponse(html_response)
+
+def new_picture(request):
+    if request.method == 'POST':
+        form = PictureForm(request.POST)
+        if form.is_valid():
+            new_picture = form.instance
+            new_picture.user = request.user
+            new_picture.save()
+        return HttpResponseRedirect('/pictures/' + str(new_picture.id))
+    else:
+        form = PictureForm()
+    response = render(request, 'newpicture.html', {'form': form})
+    return HttpResponse(response)

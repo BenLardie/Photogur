@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="{% url 'new_picture'%}" method="post">
+  {% csrf_token %}
+
+  {{form.as_p}}
+
+<button type="submit" name="button">Submit</button>
+
+
+</form>
+
+{%endblock%}
