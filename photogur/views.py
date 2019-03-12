@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Picture, Comment
 from photogur.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from photogur.forms import PictureForm
 from django.contrib.auth.decorators import login_required
+
 
 
 def root(request):
@@ -96,3 +97,22 @@ def new_picture(request):
         form = PictureForm()
     response = render(request, 'newpicture.html', {'form': form})
     return HttpResponse(response)
+
+
+@login_required
+def edit_picture(request, id):
+    picture = get_object_or_404(Picture, id=id)
+    if request.method == 'GET':
+        form = PictureForm(instance=picture)
+        context = { 'form': form, 'picture': picture}
+        return render(request, 'edit.html', context)
+
+    elif request.method == 'POST':
+        form = PictureForm(request.POST, instance=picture)
+        if form.is_valid():
+            updated_picture = form.save()
+            return HttpResponseRedirect('/pictures/' + str(picture.id))
+        else:
+            context = { 'form': form, 'picture': picture }
+            response = render(request, 'edit.html', context)
+            return HttpResponse(response)
