@@ -5,20 +5,25 @@ from photogur.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from photogur.forms import PictureForm
+from django.contrib.auth.decorators import login_required
+
 
 def root(request):
     return HttpResponseRedirect('pictures')
+
 
 def picture_page(request):
     context = {'pictures': Picture.objects.all()}
     response = render(request, 'pictures.html', context)
     return HttpResponse(response)
 
+
 def picture_show(request, id):
     picture = Picture.objects.get(pk=id)
     context = {'picture': picture}
     response = render(request, 'picture.html', context)
     return HttpResponse(response)
+
 
 def picture_search(request):
     query = request.GET['query']
@@ -27,6 +32,7 @@ def picture_search(request):
     response = render(request, 'search.html', context)
     return HttpResponse(response)
 
+
 def create_comment(request):
     picture = request.POST['picture']
     comment = request.POST['new-comment']
@@ -34,7 +40,8 @@ def create_comment(request):
                                          message=request.POST['new-comment'],
                                          picture=Picture.objects.get(pk=request.POST['picture'])
                                          )
-    return HttpResponseRedirect('/pictures/'+ request.POST['picture'])
+    return HttpResponseRedirect('/pictures/' + request.POST['picture'])
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -54,9 +61,11 @@ def login_view(request):
     response = render(request, 'login.html', context)
     return HttpResponse(response)
 
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/pictures/')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -73,6 +82,8 @@ def signup(request):
     html_response = render(request, 'signup.html', {'form': form})
     return HttpResponse(html_response)
 
+
+@login_required
 def new_picture(request):
     if request.method == 'POST':
         form = PictureForm(request.POST)
